@@ -28,6 +28,7 @@ div {
   width: 100px;
   text-align: center;
   display: flex;
+  flex-wrap: wrap;
   border: 1px solid black;
   padding: 1em
 }
@@ -35,9 +36,11 @@ div {
 .container {
   padding: 4%;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .row {
   padding: 1%;
   display: flex;
+  flex-wrap: wrap;
 }

@@ -1,4 +1,4 @@
-var divSquareNum = 0;
+var divSquareNum = 1;
 var array1 = [];
 const colorArray = ["red", "blue", "green", "yellow", "pink", "brown", "orange", "silver"];
 let squares = document.querySelectorAll('.square');
@@ -13,34 +13,29 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(parentDiv);               // Append <button> to <body>
     const parentDivider = document.getElementsByClassName("container");
     button.addEventListener("click", function () { //event trigger
-        i = divSquareNum++;
         let divChild = document.createElement("div");
-        array1.push(i);
+        array1.push(divSquareNum);
         console.log(array1);
         divChild.id = divSquareNum;
         divChild.classList.add("square", "justify-content-center");
         let divTextNode = document.createTextNode(divSquareNum); //value for alert
         divChild.appendChild(divTextNode);
         parentDiv.appendChild(divChild);
+        divSquareNum++;
 
         divChild.addEventListener("dblclick", function () {
-            if (divChild.innerHTML % 2 == 0) {
-                var divChildid = parseInt(divChild.innerHTML) + 1;
-                var evendivChildid = parseInt(divChild.innerHTML); //value for alert
-                var elemEven = document.getElementById(divChildid);
-                elemEven.remove();
-                function required(elemEven) {
-                    if (elemEven.value.length == 0) {
-                        alert("message");
-                        return false;
-                    }
-                    return true;
+            if (divChild.innerHTML % 2 === 0) {
+                if (divChild.nextElementSibling) {
+                    divChild.nextElementSibling.remove();
+                } else {
+                    alert("There is no element to remove!");
                 }
             } else {
-                var divChildid1 = parseInt(divChild.innerHTML) - 1;
-                var odddivChildid = parseInt(divChild.innerHTML);
-                var elemOdd = document.getElementById(divChildid1);
-                elemOdd.remove();
+                if (divChild.previousElementSibling) {
+                    divChild.previousElementSibling.remove();
+                } else {
+                    alert("There is no element to remove!");
+                }
             }
         });
         divChild.addEventListener("click", function () {
